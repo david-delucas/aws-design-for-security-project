@@ -1,0 +1,28 @@
+# Identifying 2 poor security practices
+
+
+1. Web Service instance in public subnet.
+
+Security group for application server (WebAppSG) have a very critical configuration issue as it has 
+Open All Ports Protocols: it  has all ports open to 0.0.0.0/0 and all protocols open to 0.0.0.0/0
+as inbound rules.
+
+This instance is publicly accesible so attackers can reach it an perform DoS attacks for example or other attacks
+
+
+
+2. Public access to S3 Bucket "free recipes".
+
+Ensuring that S3 buckets are configured securely is crucial
+The vast majority of cloud data breaches in the last few years were of private data being leaked from S3 buckets.
+
+
+Blocking S3 public access at the bucket-level ensures objects are not accidentally exposed.	
+Recommended Action	Enable the S3 public access block on all S3 buckets.
+
+Other recomendations are:
+
+Use VPC Endpoints: This allows you to block requests that do not originate from your VPC network.
+Create S3 Bucket Policies: Use policies to restrict and control access.
+As it is not mentioned, another recomentation is to Use Object Versioning which makes it difficult for infiltrators to 
+corrupt or delete data.

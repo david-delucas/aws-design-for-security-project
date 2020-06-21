@@ -1,0 +1,48 @@
+# Output from cloudformation CLI
+
+
+{
+    "StackId": "arn:aws:cloudformation:us-east-1:4363053XXXXXX:stack/c3-s3/70dfd370-2118-11ea-aea4-12d607a4fd1c"
+}
+
+{
+    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-vpc/b7abdcb0-b3ce-11ea-9f81-0e58925d1f8e"
+}
+
+
+{
+    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-app/4490a100-b3d0-11ea-9b3b-125f4521752f"
+}
+
+# Bucket names:
+
+
+cand-c3-free-recipes-212034738401
+cand-c3-secret-recipes-212034738401
+
+
+Application Load Balancer endpoint to test the web service - ApplicationURL
+    c1-web-service-alb-1454673748.us-east-1.elb.amazonaws.com
+
+Web application EC2 instance public IP address to simulate the attack - ApplicationInstanceIP
+    ec2-54-167-228-214.compute-1.amazonaws.com
+
+Public IP address of the attack instance from which to run the attack scripts - AttackInstanceIP
+    ec2-3-81-68-40.compute-1.amazonaws.com
+
+
+
+
+# Fix Error deploying the cloudformation script for app
+
+You must specify an allocation id when mapping an address to a VPC instance (Service: AmazonEC2; Status Code: 400; Error Code: InvalidParameterCombination; Request ID: be663b37-6a99-4011-85fb-df4dfd820edd)
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-eip.html
+
+Fixed adding "Domain: vpc" to AppEIP in c3-app.yml (Domain: Set to vpc to allocate the address for use with instances in a VPC.)
+
+
+
+# Static Code Analysis for Infrastructure as Code
+
+Using cloud.aquasec.com to perform security scan for vulnerabilities in Exercise 1 - Task 1

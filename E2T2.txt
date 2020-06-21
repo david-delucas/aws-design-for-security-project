@@ -1,0 +1,26 @@
+# Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+Show the vulnerabilities by resource:
+
+## S3 Buckets cand-c3-free-recipes-... &  cand-c3-private-recipes-...
+
+s3-default-encryption-kms -> Amazon S3 bucket is not encrypted with AWS KMS key.
+s3-bucket-replication-enabled -> Amazon S3 buckets haven't have cross-region replication enabled.
+s3-bucket-logging-enabled -> Logging is not enabled for the S3 buckets.
+s3-bucket-versioning-enabled -> Versioning is not enabled for the S3 buckets. 
+s3-bucket-server-side-encryption-enabled -> Amazon S3 bucket either doesn't have S3 default encryption enabled or 
+  the S3 bucket policy doesn't explicitly denies put-object requests without server side encryption.
+s3-bucket-default-lock-enabled -> S3 Bucket lock is not enabled.
+s3-bucket-ssl-requests-only -> S3 buckets doesn't have policies that require requests to use Secure Socket Layer (SSL).
+
+## ...
+
+
+
+PENDIENTE
+
+
+# Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+
+PENDIENTE
