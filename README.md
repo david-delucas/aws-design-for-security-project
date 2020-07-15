@@ -34,7 +34,7 @@ In this task, the objective is to familiarize yourself with the starting archite
  
 The diagram file, title `AWS-WebServiceDiagram-v1-insecure.png`, can be found in the _starter_ directory in this repo.
  
-![base environment](starter/starter/AWS-WebServiceDiagram-v1-insecure.png)
+![base environment](starter/AWS-WebServiceDiagram-v1-insecure.png)
  
 #### Expected user flow:
 - Clients will invoke a public-facing web service to pull free recipes.  
@@ -68,7 +68,7 @@ Additionally, we have provided a CloudFormation template which will deploy the f
 ### Task 3: Deployment of Initial Infrastructure
 In this task, the objective is to deploy the CloudFormation stacks that will create the below environment.
  
-![base environment](starter/starter/AWS-WebServiceDiagram-v1-insecure.png)
+![base environment](starter/AWS-WebServiceDiagram-v1-insecure.png)
  
  
 We will utilize the AWS CLI in this guide, however you are welcome to use the AWS console to deploy the CloudFormation templates.
