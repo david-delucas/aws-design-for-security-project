@@ -1,0 +1,15 @@
+
+
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+
+
+- Implement a AWS native cloud based Web Application Firewall  to defend against application level exploits.
+
+
+1. Test and Fine Tune WAF Rules to rule out false positives.
+2. Perform penetration and exploit testing against applications to ensure that the WAF defends as expected.
+3. Enable WAF logging and export logs to your security monitoring tools.
+4. Move public endpoints for the application behind the following services: CloudFront, Application Load Balancers and API Gateway.
+
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.

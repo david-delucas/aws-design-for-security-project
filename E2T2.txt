@@ -4,23 +4,41 @@ Show the vulnerabilities by resource:
 
 ## S3 Buckets cand-c3-free-recipes-... &  cand-c3-private-recipes-...
 
-s3-default-encryption-kms -> Amazon S3 bucket is not encrypted with AWS KMS key.
-s3-bucket-replication-enabled -> Amazon S3 buckets haven't have cross-region replication enabled.
-s3-bucket-logging-enabled -> Logging is not enabled for the S3 buckets.
-s3-bucket-versioning-enabled -> Versioning is not enabled for the S3 buckets. 
-s3-bucket-server-side-encryption-enabled -> Amazon S3 bucket either doesn't have S3 default encryption enabled or 
+- s3-default-encryption-kms -> Amazon S3 bucket is not encrypted with AWS KMS key.
+- s3-bucket-replication-enabled -> Amazon S3 buckets haven't have cross-region replication enabled.
+- s3-bucket-logging-enabled -> Logging is not enabled for the S3 buckets.
+- s3-bucket-versioning-enabled -> Versioning is not enabled for the S3 buckets. 
+- s3-bucket-server-side-encryption-enabled -> Amazon S3 bucket either doesn't have S3 default encryption enabled or 
   the S3 bucket policy doesn't explicitly denies put-object requests without server side encryption.
-s3-bucket-default-lock-enabled -> S3 Bucket lock is not enabled.
-s3-bucket-ssl-requests-only -> S3 buckets doesn't have policies that require requests to use Secure Socket Layer (SSL).
+- s3-bucket-default-lock-enabled -> S3 Bucket lock is not enabled.
+- s3-bucket-ssl-requests-only -> S3 buckets doesn't have policies that require requests to use Secure Socket Layer (SSL).
 
-## ...
+## Web service instance EC2
 
+- TCP port 20, which is associated with FTP, is reachable from the internet. You can install the Inspector agent on this instance and re-run the assessment to check for any process listening on this port.
+- UDP port 23, which is associated with Telnet, is reachable from the internet. You can install the Inspector agent on this instance and re-run the assessment to check for any process listening on this port. 
+- UDP port 21, which is associated with FTP, is reachable from the internet. You can install the Inspector agent on this instance and re-run the assessment to check for any process listening on this port. 
 
-
-PENDIENTE
 
 
 # Bonus - provide recommendations on how to remediate the vulnerabilities.
 
+- Restrict Access to Cloud Resources
+Use of firewalls to provide the ability to granularly restrict and control network traffic to and from cloud VPCs, subnets and instances
 
-PENDIENTE
+- Use rescurity groups
+
+Security groups used as a second layer to restrict traffic to and from your cloud hosts and instances
+
+- ACLs
+
+Apply ACLs for incoming traffic to all subnets based on trusted networks.
+
+- S3 Bucket Server-Side Encryption
+Configures S3 buckets with default encryption enabled. This will automatically encrypt files that are written to S3.
+
+
+- S3 Block Public Access & Use VPC Endpoints: This allows you to block requests that do not originate from your VPC network.
+
+- Checking Infrastructure as Code for Vulnerabilities
+Use regularly tools like Cfripper for the CloudFormation scripts

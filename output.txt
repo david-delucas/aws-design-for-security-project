@@ -2,33 +2,35 @@
 
 
 {
-    "StackId": "arn:aws:cloudformation:us-east-1:4363053XXXXXX:stack/c3-s3/70dfd370-2118-11ea-aea4-12d607a4fd1c"
+    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-s3/d222e150-b4ab-11ea-9402-12709ad3d671"
 }
 
-{
-    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-vpc/b7abdcb0-b3ce-11ea-9f81-0e58925d1f8e"
-}
 
 
 {
-    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-app/4490a100-b3d0-11ea-9b3b-125f4521752f"
+    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-vpc/2388e490-b4ac-11ea-80a0-12e727a79a85"
 }
 
-# Bucket names:
+aws cloudformation create-stack --region us-east-1 --stack-name c3-app --template-body file://starter/c3-app.yml --parameters ParameterKey=KeyPair,ParameterValue=udacity --capabilities CAPABILITY_IAM
 
 
-cand-c3-free-recipes-212034738401
-cand-c3-secret-recipes-212034738401
+{
+    "StackId": "arn:aws:cloudformation:us-east-1:212034738401:stack/c3-app/998cfd70-b4ac-11ea-a236-0e2e9aec3a21"
+}
+
+# S3
+
+BucketArnVPCFlowLogs	arn:aws:s3:::cand-c3-vpc-flow-logs-212034738401	Arn of the Amazon S3 bucket that have vpc flow logs for this project	BucketArnVPCFlowLogs
+BucketNameRecipesFree	cand-c3-free-recipes-212034738401	Name of the Amazon S3 bucket that you will upload free recipes to.	BucketNameRecipesFree
+BucketNameRecipesSecret	cand-c3-secret-recipes-212034738401	Name of the Amazon S3 bucket that you will upload secret recipes to.	BucketNameRecipesSecret
+
+# app
+
+ApplicationInstanceIP	ec2-54-85-170-221.compute-1.amazonaws.com	
+ApplicationURL	c1-web-service-alb-1027416205.us-east-1.elb.amazonaws.com	
+AttackInstanceIP	ec2-54-81-184-99.compute-1.amazonaws.com
 
 
-Application Load Balancer endpoint to test the web service - ApplicationURL
-    c1-web-service-alb-1454673748.us-east-1.elb.amazonaws.com
-
-Web application EC2 instance public IP address to simulate the attack - ApplicationInstanceIP
-    ec2-54-167-228-214.compute-1.amazonaws.com
-
-Public IP address of the attack instance from which to run the attack scripts - AttackInstanceIP
-    ec2-3-81-68-40.compute-1.amazonaws.com
 
 
 

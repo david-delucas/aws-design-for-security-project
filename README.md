@@ -17,12 +17,12 @@ Students will need to use their personal AWS accounts.  Udacity will provide a $
 Instructions and examples in this project will make use of the AWS CLI in order to automate and reduce time and complexity.
 Refer to the below links to get the AWS CLI installed and configured in your local environment.
  
-[Installing the CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+[Installing the CLI](starter/https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
  
-[Configuring the CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+[Configuring the CLI](starter/https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
  
 ### Local setup of git and GitHub Repository
-You will need to clone or download [this GitHub repo](https://github.com/udacity/nd063-c3-design-for-security-project-starter) in order to work on and submit this project.
+You will need to clone or download [this GitHub repo](starter/https://github.com/udacity/nd063-c3-design-for-security-project-starter) in order to work on and submit this project.
 
 ## Exercise 1 - Deploy Project Environment
  
@@ -34,7 +34,7 @@ In this task, the objective is to familiarize yourself with the starting archite
  
 The diagram file, title `AWS-WebServiceDiagram-v1-insecure.png`, can be found in the _starter_ directory in this repo.
  
-![base environment](AWS-WebServiceDiagram-v1-insecure.png)
+![base environment](starter/starter/AWS-WebServiceDiagram-v1-insecure.png)
  
 #### Expected user flow:
 - Clients will invoke a public-facing web service to pull free recipes.  
@@ -68,7 +68,7 @@ Additionally, we have provided a CloudFormation template which will deploy the f
 ### Task 3: Deployment of Initial Infrastructure
 In this task, the objective is to deploy the CloudFormation stacks that will create the below environment.
  
-![base environment](AWS-WebServiceDiagram-v1-insecure.png)
+![base environment](starter/starter/AWS-WebServiceDiagram-v1-insecure.png)
  
  
 We will utilize the AWS CLI in this guide, however you are welcome to use the AWS console to deploy the CloudFormation templates.
@@ -115,13 +115,13 @@ Expected example output:
 Expected example AWS Console status: 
 https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks
  
-![Expected AWS Console Status](cloudformation_status.png)
+![Expected AWS Console Status](starter/cloudformation_status.png)
  
 #### 2. Once you see Status is CREATE_COMPLETE for all 3 stacks, obtain the required parameters needed for the project.
  
 Obtain the name of the S3 bucket by navigating to the Outputs section of the stack:
  
-![Outputs Section](s3stack_output.png)
+![Outputs Section](starter/s3stack_output.png)
  
 Note down the names of the two other buckets that have been created, one for free recipes and one for secret recipes.  You will need the bucket names to upload example recipe data to the buckets and to run the attack scripts.
  
@@ -131,7 +131,7 @@ Note down the names of the two other buckets that have been created, one for fre
  
 You can get these from the Outputs section of the **c3-app** stack.
  
-![Outputs](outputs.png)
+![Outputs](starter/outputs.png)
  
 #### 3.  Upload data to S3 buckets
 Upload the free recipes to the free recipe S3 bucket from step 2. Do this by typing this command into the console (you will replace `<BucketNameRecipesFree>` with your bucket name):
@@ -178,7 +178,7 @@ First, we will set up security monitoring to ensure that the AWS account and env
  
 #### 1. Enable AWS Config (skip this step if you already have it enabled)  
  a. See below screenshot for the initial settings.   
- ![ConfigEnabled](config_enable.png)  
+ ![ConfigEnabled](starter/config_enable.png)  
  b. On the Rules page, click **Skip**.  
  c. On the Review page, click **Confirm**.
 #### 2. Enable AWS Security Hub
@@ -186,12 +186,12 @@ First, we will set up security monitoring to ensure that the AWS account and env
 b. On the next page, click **Enable Security Hub**
 #### 3. Enable AWS Inspector scan
  a. From the Inspector service landing page, leave the defaults and click **Advanced**.  
- ![Inspector1](inspector_setup_runonce.png)  
+ ![Inspector1](starter/inspector_setup_runonce.png)  
  b. Uncheck **All Instances** and **Install Agents**.  
  c. Choose Name for Key and ‘Web Services Instance - C3’ for value, click **Next**.  
- ![Inspector2](inspector_setup_2.png)  
+ ![Inspector2](starter/inspector_setup_2.png)  
  d. Edit the rules packages as seen in the screenshot below.  
- ![Inspector3](inspector_setup_3.png)  
+ ![Inspector3](starter/inspector_setup_3.png)  
  e. Uncheck **Assessment Schedule**.  
  f. Set a duration of 15 minutes.
  g. Click **Next** and **Create**.
@@ -232,7 +232,7 @@ Capturing secret recipe files from the s3 bucket using stolen API keys.
 ```
 ssh -i <your private key file> ubuntu@<AttackInstanceIP>
 ```
-The above instructions are for macOS X users.  For further guidance and other options to connet to the EC2 instance refer to [this guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
+The above instructions are for macOS X users.  For further guidance and other options to connet to the EC2 instance refer to [this guide](starter/https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
  
 #### 1. Log in to the attack simulation server using your SSH key pair.
 #### 2. Run the below commands to start a brute force attack against the application server.  You will need the application server hostname for this.
@@ -243,7 +243,7 @@ hydra -l ubuntu -P rockyou.txt ssh://<YourApplicationServerDnsNameHere>
  
 You should see output similar to the following:
 		
-![Brute Force](brute_force.png)
+![Brute Force](starter/brute_force.png)
  
 Wait 10 - 15 minutes and check AWS Guard Duty.
  
@@ -369,7 +369,7 @@ sudo service ssh restart
 
 This will cause the S3 service to encrypt any objects that are stored going forward by default.
 Use the below guide to enable this on both S3 buckets.   
-[Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
+[Amazon S3 Default Encryption for S3 Buckets](starter/https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
 
 Capture the screenshot of the secret recipes bucket showing that default encryption has been enabled.
 
@@ -413,7 +413,7 @@ Brainstorm and list additional hardening suggestions aside from those implemente
 
 Take a look at a very common deployment pipeline diagrammed below:
 
-![DevOpsPipeline](DevOpsPipeline.png)
+![DevOpsPipeline](starter/DevOpsPipeline.png)
 
 The high-level steps are as follows:
 
