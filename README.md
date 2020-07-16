@@ -1,38 +1,29 @@
 # Cloud Security - Secure the Recipe Vault Web Application
  
-In this project, you will:
+This projects contains the following tasks:
  
 * Deploy and assess a simple web application environment’s security posture
 * Test the security of the environment by simulating attack scenarios and exploiting cloud configuration vulnerabilities
 * Implement monitoring to identify insecure configurations and malicious activity 
-* Apply methods learned in the course to harden and secure the environment
+* Apply best practives to harden and secure the environment
 * Design a DevSecOps pipeline
  
 ## Dependencies and Prerequisites
- 
-### Access to AWS account  
-Students will need to use their personal AWS accounts.  Udacity will provide a $100 credit for any usage costs. If project instructions are followed we do not anticipate usage costs to exceed this amount.
- 
+
 ### Installation of the AWS CLI and Local Setup of AWS API keys
-Instructions and examples in this project will make use of the AWS CLI in order to automate and reduce time and complexity.
 Refer to the below links to get the AWS CLI installed and configured in your local environment.
  
 [Installing the CLI](starter/https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
  
 [Configuring the CLI](starter/https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
  
-### Local setup of git and GitHub Repository
-You will need to clone or download [this GitHub repo](starter/https://github.com/udacity/nd063-c3-design-for-security-project-starter) in order to work on and submit this project.
-
-## Exercise 1 - Deploy Project Environment
+## Task 1 - Deploy Project Environment
  
-**_Deliverables for Exercise 1:_**
+**_Deliverables for Task 1:_**
 * **E1T4.txt** - Text file identifying 2 poor security practices with justification. 
  
 ### Task 1:  Review Architecture Diagram
-In this task, the objective is to familiarize yourself with the starting architecture diagram. An architecture diagram has been provided which reflects the resources that will be deployed in your AWS account.
- 
-The diagram file, title `AWS-WebServiceDiagram-v1-insecure.png`, can be found in the _starter_ directory in this repo.
+An architecture diagram is provided which reflects the resources that will be deployed in your AWS account.
  
 ![base environment](starter/AWS-WebServiceDiagram-v1-insecure.png)
  
@@ -69,9 +60,6 @@ Additionally, we have provided a CloudFormation template which will deploy the f
 In this task, the objective is to deploy the CloudFormation stacks that will create the below environment.
  
 ![base environment](starter/AWS-WebServiceDiagram-v1-insecure.png)
- 
- 
-We will utilize the AWS CLI in this guide, however you are welcome to use the AWS console to deploy the CloudFormation templates.
  
  
 #### 1. From the root directory of the repository - execute the below command to deploy the templates.
@@ -164,9 +152,9 @@ Based on the architecture diagram, and the steps you have taken so far to upload
 **Deliverables:** 
 - **E1T4.txt** - Text file identifying 2 poor security practices with justification. 
  
-## Exercise 2: Enable Security Monitoring
+## Task 2: Enable Security Monitoring
  
-**_Deliverables for Exercise 2:_**
+**_Deliverables for Task 2:_**
 - **E2T2_config.png** - Screenshot of AWS Config showing non-compliant rules.
 - **E2T2_inspector.png** - Screenshot of AWS Inspector showing scan results.
 - **E2T2.png_securityhub.png** - Screenshot of AWS Security Hub showing compliance standards for CIS foundations.
@@ -215,15 +203,15 @@ Research and analyze which of the vulnerabilities appear to be related to the co
 - **E2T2.png_securityhub.png** - Screenshot of AWS Security Hub showing compliance standards for CIS foundations.
 - **E2T2.txt** - Provide recommendations on how to remediate the vulnerabilities.
  
-## Exercise 3 - Attack Simulation
+## Task 3 - Attack Simulation
  
 Now you will run scripts that will simulate the following attack conditions:
 Making an SSH connection to the application server using brute force password cracking.
 Capturing secret recipe files from the s3 bucket using stolen API keys.
  
-**_Deliverables for Exercise 3:_**
-- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Exercise 3, Task 1 attack.
-- **E3T1.txt** - Answer to the questions at the end of Exercise 3, Task 1.
+**_Deliverables for Task 3:_**
+- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Task 3, Task 1 attack.
+- **E3T1.txt** - Answer to the questions at the end of Task 3, Task 1.
 - **E3T2_s3breach.png** - Screenshot showing the resulting breach after the brute force attack.
 - _Optional_ **Task 3** - Screenshots showing attack attempts and monitoring or logs from the WAF showing blocked attempts.
  
@@ -255,8 +243,8 @@ Wait 10 - 15 minutes and check AWS Guard Duty.
 Submit text answers in E3T1.txt.
  
 **Deliverables:**
-- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Exercise 3, Task 1 attack.
-- **E3T1.txt** - Answer to the questions at the end of Exercise 3, Task 1.
+- **E3T1_guardduty.png** - Screenshot of Guard Duty findings specific to the Task 3, Task 1 attack.
+- **E3T1.txt** - Answer to the questions at the end of Task 3, Task 1.
  
 ### Task 2: Accessing Secret Recipe Data File from S3
  
@@ -289,10 +277,10 @@ Submit screenshots of your attempts and monitoring or logs from the WAF showing 
 - **E3T2_s3breach.png** - Screenshot showing the resulting breach after the brute force attack.
 - _Optional_ **Task 3** - Screenshots showing attack attempts and monitoring or logs from the WAF showing blocked attempts.
 
-## Exercise 4 - Implement Security Hardening
+## Task 4 - Implement Security Hardening
 
-**_Deliverables for Exercise 4:_**
-- **E4T1.txt** - Answer to the prompts in Exercise 4, Task 1.
+**_Deliverables for Task 4:_**
+- **E4T1.txt** - Answer to the prompts in Task 4, Task 1.
 - **E4T2_sshbruteforce.png** - Screenshot of terminal window showing the brute force attack and the remediation.
 - **E4T2_networksg.png** - Screenshot of the security group change. 
 - **E4T2_sshattempt.png** - Screenshot of your SSH attempt.
@@ -302,9 +290,9 @@ Submit screenshots of your attempts and monitoring or logs from the WAF showing 
 - **E4T3_securityhub.png** - Screenshot of Security Hub after reevaluating the number of findings.
 - **E4T3_config.png** - Screenshot of Config after reevaluating the number of findings.
 - **E4T3_inspector.png** - Screenshot of Inspector after reevaluating the number of findings.
-- **E4T4.txt** - Answers from prompts in Exercise 4, Task 4.
+- **E4T4.txt** - Answers from prompts in Task 4, Task 4.
 - _Optional_ **c3-app_solution.yml** and **c3-s3_solution.yml** - Updated cloud formation templates which reflect changes made in E4 tasks related to AWS configuration changes.
-- _Optional_ **E4T5.txt** - Additional hardening suggestions from Exercise 4, Task 5.
+- _Optional_ **E4T5.txt** - Additional hardening suggestions from Task 4, Task 5.
 
 ### Task 1 - Remediation plan
 
@@ -315,7 +303,7 @@ As a Cloud Architect, you have been asked to apply security best practices to th
 Submit answer in E4T1.txt
 
 **Deliverables:**
-- **E4T1.txt** - Answer to the prompts in Exercise 4, Task 1.
+- **E4T1.txt** - Answer to the prompts in Task 4, Task 1.
 
 ### Task 2 - Hardening
 
@@ -338,7 +326,7 @@ PasswordAuthentication no
 #restart SSH server
 sudo service ssh restart
 ```
-2. Test that this made a difference.  Run the brute force attack again from Exercise 3, Task 1.  
+2. Test that this made a difference.  Run the brute force attack again from Task 3, Task 1.  
 
 3. Take a screenshot of the terminal window where you ran the attack highlighting the remediation and name it E4T2_sshbruteforce.png.
 
@@ -378,7 +366,7 @@ Capture the screenshot of the secret recipes bucket showing that default encrypt
 
 ### Task 3: Check Monitoring Tools to see if the Changes that were made have Reduced the Number of Findings
 
-1. Go to AWS inspector and run the inspector scan that was run in Exercise 2.
+1. Go to AWS inspector and run the inspector scan that was run in Task 2.
 2. After 20-30 mins - check Security Hub to see if the finding count reduced.
 3. Check AWS Config rules to see if any of the rules are now in compliance.
 4. Submit screenshots of Inspector, Security Hub, and AWS Config titled E4T3_inspector.png, E4T3_securityhub.png, and E4T3_config.png respectively.
@@ -398,7 +386,7 @@ Capture the screenshot of the secret recipes bucket showing that default encrypt
 Submit your answers in E4T4.txt.
 
 **Deliverables**:
-- **E4T4.txt** - Answers from prompts in Exercise 4, Task 4.
+- **E4T4.txt** - Answers from prompts in Task 4, Task 4.
 
 ###  _Optional Standout Suggestion_ Task 5 - Additional Hardening
 
@@ -407,9 +395,9 @@ Brainstorm and list additional hardening suggestions aside from those implemente
 
 **Deliverables**:
 - _Optional_ **c3-app_solution.yml** and **c3-s3_solution.yml** - updated cloud formation templates which reflect changes made in E4 tasks related to AWS configuration changes.
-- _Optional_ **E4T5.txt** - Additional hardening suggestions from Exercise 4, Task 5.
+- _Optional_ **E4T5.txt** - Additional hardening suggestions from Task 4, Task 5.
 
-## Exercise 5 - Designing a DevSecOps Pipeline
+## Task 5 - Designing a DevSecOps Pipeline
 
 Take a look at a very common deployment pipeline diagrammed below:
 
@@ -423,11 +411,11 @@ The high-level steps are as follows:
 4. Changes to cloud configuration or infrastructure as code may have also been committed.
 5. A deployment to the environment ensues applying the changes
 
-**_Deliverables for Exercise 5:_**
+**_Deliverables for Task 5:_**
 - **DevSecOpsPipline.[ppt or png]** - Your updated pipeline.
-- **E5T2.txt** - Answer from prompts in Exercise 5, Task 2.
+- **E5T2.txt** - Answer from prompts in Task 5, Task 2.
 - *Optional* **E5T3.png** - Screenshot of tool that has identified bad practices.
-- *Optional* **E5T3.txt** - Answers from prompts in Exercise 5, Task 3.
+- *Optional* **E5T3.txt** - Answers from prompts in Task 5, Task 3.
 
 ### Task 1:  Design a DevSecOps pipeline
 
@@ -455,7 +443,7 @@ You will need to determine appropriate tools to incorporate into the pipeline to
 Submit your answers in E5T2.txt
 
 **Deliverables**:
-- **E5T2.txt** - Answer from prompts in Exercise 5, Task 2.
+- **E5T2.txt** - Answer from prompts in Task 5, Task 2.
 
 ### _Optional Standout Suggestion_ Task 3 - Scanning Infrastructure Code
 
@@ -465,16 +453,16 @@ Submit your answers in E5T2.txt
 
 **Deliverables**:
 - _Optional_ **E5T3.png** - Screenshot of tool that has identified bad practices.
-- _Optional_ **E5T3.txt** - Answers from prompts in Exercise 5, Task 3.
+- _Optional_ **E5T3.txt** - Answers from prompts in Task 5, Task 3.
 
-## Exercise 6 - Clean up 
+## Task 6 - Clean up 
 
 Once your project has been submitted and reviewed - to prevent undesired charges don’t forget to: 
 - Disable Security Hub and Guard Duty.
 - Delete recipe files uploaded to the S3 buckets.
 - Delete your cloud formation stacks.
 
-## _Optional Standout Suggestion_ Exercise 7 - Enjoying the Spoils of Your Good Security Work!
+## _Optional Standout Suggestion_ Task 7 - Enjoying the Spoils of Your Good Security Work!
 
 Bake one of the desserts from the recipe text files and submit a picture. :-)
 

@@ -1,0 +1,55 @@
+1. Identify tools that will allow you to do the following: 
+
+
+a. Scan infrastructure as code templates. 
+
+
+Consider the following open source tools for checking CloudFormation template code:
+
+- Cfripper
+- Cloudsploit
+- cfn-lint
+
+Consider the following open source tools for checking Terraform template code:
+
+- Chef inspec
+- Open policy agent / Regula
+- Terrascan
+
+In addition to open source options, many of the major commercial cloud security products offer 
+infrastructure as code scanning as part of their product platform including prisma cloud, cloud conformity, fugue, terraform cloud etc.
+
+
+b. Scan AMI’s or containers for OS vulnerabilities. 
+
+
+
+Checking container images for vulnerabilities can be done using a number of open source and commercial tools. CURRENTLY AWS DOESN'T PROVIDE NATIVE TOOLS FOR CONTAINER VULNERAVILITY CHECKS
+Open source tools include:
+- Clair
+- Anchore
+- Trivy
+
+Commercial products include:
+- aquasec,
+- sysdig
+- twistlock
+
+
+c. Scan an AWS environment for cloud configuration vulnerabilities.
+
+- AWS Config 
+
+
+2. For each tool - identify an example compliance violation or vulnerability which it might expose.
+
+
+Network exposure vulnerabilities, as insecure IaC configurations which expand the attack surface
+exposing the infrastructure to cyberattacks
+
+Including base images stored in trusted registries allows to detect and address any known vulnerabilities in such base images early.
+
+Unauthorized Privilege Escalations
+
+Untagged resources built using IaC result in ghost resources that can cause challenges in detecting, visualizing, and gaining observability within the actual cloud environment. 
+
