@@ -3,17 +3,21 @@
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
 
 
-Implement a AWS native cloud based Web Application Firewall  to defend against application level exploits.
+1. Disable Passwords for SSH. This is critical as passwords enabled for SSH leave the server open to brute force SSH attacks.
 
+2. Setup AWS GuardDuty: As AWS GuardDuty can monitor CloudTrail, DNS, and VPC flow logs to identify suspicious activity like ssh brute force attempts.
 
-1. Test and Fine Tune WAF Rules to rule out false positives.
-2. Perform penetration and exploit testing against applications to ensure that the WAF defends as expected.
-3. Enable WAF logging and export logs to your security monitoring tools.
-4. Move public endpoints for the application behind the following services: CloudFront, Application Load Balancers and API Gateway.
+3. Implement a AWS native cloud based Web Application Firewall  to defend against application level exploits. In detail follow these steps:
+    1. Test and Fine Tune WAF Rules to rule out false positives.
+    2. Perform penetration and exploit testing against applications to ensure that the WAF defends as expected.
+    3. Enable WAF logging and export logs to your security monitoring tools.
+    4. Move public endpoints for the application behind the following services: CloudFront, Application Load Balancers and API Gateway.
 
 
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
 
-Highly sensitive data should be encrypted by the application prior to putting an object in S3.
+Highly sensitive data should be encrypted by the application prior to putting an object in S3, doing this would have  prevented access to sensitive data.
 
+Even though it will not help prevent access to sensitive data an additional recomentation is to set object level logging (enabled either through CloudTrail or the S3 bucket's settings). 
+All calls to read or write data will appear in CloudTrail, as from a security standpoint it is important to be aware of attempts to read or write objects to S3 buckets - especially those that contain sensitive or critical data. 
 

@@ -466,3 +466,11 @@ Once your project has been submitted and reviewed - to prevent undesired charges
 
 Bake one of the desserts from the recipe text files and submit a picture. :-)
 
+
+
+Changes 18JUL2020:
+
+- Additional detail for the E4T1.txt, that illustrates the remediation plan to prevent an ssh brute force attack from the internet.
+- Updated E4T2_networksg.png to remove rule which permits accesss to TCP port 80 open for all.
+- adding the tools used on each step in the devsecops pipeline (DevSecOpsPipeline.png). 
+- adding example vulnerabilities that can be identified with each tool (E5T2.txt).

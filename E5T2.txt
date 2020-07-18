@@ -1,55 +1,73 @@
 1. Identify tools that will allow you to do the following: 
 
+    a. Scan infrastructure as code templates. 
 
-a. Scan infrastructure as code templates. 
+        Consider the following open source tools for checking CloudFormation template code:
+        - Cfripper
+        - Cloudsploit
+        - cfn-lint
 
+        Consider the following open source tools for checking Terraform template code:
+        - Chef inspec
+        - Open policy agent / Regula
+        - Terrascan
 
-Consider the following open source tools for checking CloudFormation template code:
+        In addition to open source options, many of the major commercial cloud security products offer 
+        infrastructure as code scanning as part of their product platform including prisma cloud, cloud conformity, fugue, terraform cloud etc.
 
-- Cfripper
-- Cloudsploit
-- cfn-lint
+    b. Scan AMI’s or containers for OS vulnerabilities. 
 
-Consider the following open source tools for checking Terraform template code:
+        Checking container images for vulnerabilities can be done using a number of open source and commercial tools. CURRENTLY AWS DOESN'T PROVIDE NATIVE TOOLS FOR CONTAINER VULNERAVILITY CHECKS
+        Open source tools include:
+        - Clair
+        - Anchore
+        - Trivy
 
-- Chef inspec
-- Open policy agent / Regula
-- Terrascan
-
-In addition to open source options, many of the major commercial cloud security products offer 
-infrastructure as code scanning as part of their product platform including prisma cloud, cloud conformity, fugue, terraform cloud etc.
-
-
-b. Scan AMI’s or containers for OS vulnerabilities. 
-
-
-
-Checking container images for vulnerabilities can be done using a number of open source and commercial tools. CURRENTLY AWS DOESN'T PROVIDE NATIVE TOOLS FOR CONTAINER VULNERAVILITY CHECKS
-Open source tools include:
-- Clair
-- Anchore
-- Trivy
-
-Commercial products include:
-- aquasec,
-- sysdig
-- twistlock
+        Commercial products include:
+        - aquasec,
+        - sysdig
+        - twistlock
 
 
-c. Scan an AWS environment for cloud configuration vulnerabilities.
-
-- AWS Config 
+    c. Scan an AWS environment for cloud configuration vulnerabilities.
+        - AWS Config 
 
 
 2. For each tool - identify an example compliance violation or vulnerability which it might expose.
 
 
-Network exposure vulnerabilities, as insecure IaC configurations which expand the attack surface
-exposing the infrastructure to cyberattacks
+    a. For the tools to scan infrastructure as code templates (like Chef inspec, Open policy agent / Regula, Terrascan - for terraform templates) examples of compliance vulnerabilities which they might expose:
 
-Including base images stored in trusted registries allows to detect and address any known vulnerabilities in such base images early.
+        - IAM policies should not have full ":" administrative privileges
+        - VPC security group rules should not permit ingress from '0.0.0.0/0' to port 22 (SSH)
+        - KMS crypto keys should be rotated at least once every 365 days
+        - VPC flow logging should be enabled
+        - IAM policies should not be attached directly to users
+        - Detect network exposure vulnerabilities, like insecure IaC configurations which expand the attack surface exposing the infrastructure to cyberattacks
+        - Detect untagged resources built using IaC result in ghost resources that can cause challenges in detecting, visualizing, and gaining observability within the actual cloud environment. 
+        - Detect Unauthorized Privilege Escalations
 
-Unauthorized Privilege Escalations
+    b. For the tools to scan AMI’s or containers for OS vulnerabilities (like Clair, Anchore, or Trivy) examples of compliance vulnerabilities which they might expose: 
 
-Untagged resources built using IaC result in ghost resources that can cause challenges in detecting, visualizing, and gaining observability within the actual cloud environment. 
+        - detect vulnerabilities in the OS level (windows, linux etc.) and application level (python, node.js, etc.)
+        - Ensure all secrets are not present in the image including passwords, API keys, and any other sensitive information
+        - detect vulnerabilities in third party libraries used inside the containers (like node.js NPM's, Ruby GEM's, python PIP, etc.) 
+        - Detect and address any known vulnerabilities in base images stored in trusted registries.
+        - check if the images have any Common Vulnerabilities and Exposures (CVE)
+
+
+    c. For the tools to scan an AWS environment for cloud configuration vulnerabilities (like AWS Config) examples of compliance vulnerabilities which they might expose: 
+
+        - AWS config can be used to immediately identify resources that have been created without the mandated encryption settings.
+        - another basic example of a rule could be to identify any security group that allows Remote Desktop Protocol access from all IP addresses - or 0.0.0.0/0 port 3389.
+
+
+
+
+
+
+
+
+
+
 
